@@ -1,11 +1,17 @@
-import React, {Component} from 'react'
-import  Input from '../../components/Input/Input'
+import React, { Component } from 'react'
+import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
 import SERVER_URL from '../../static/Config/Config'
-import './addProjects.css'
+import classes from './addProjects.css'
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from '@material-ui/icons/Close';
 import Axios from 'axios'
-class Addproj extends Component{
+
+class Addproj extends Component {
     state = {
+        showSnackbar: false,
+        snackbarMessage: "",
         addProjectForm: {
             projectName: {
                 elementType: 'input',
@@ -19,7 +25,7 @@ class Addproj extends Component{
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'CompanyName'
+                    placeholder: 'Company Name'
                 },
                 value: ''
             },
@@ -92,7 +98,7 @@ class Addproj extends Component{
         }
     }
 
-    addProjectHandler = ( event ) => {
+    addProjectHandler = (event) => {
         event.preventDefault();
         const formData = {};
         for (let formElementIdentifier in this.state.addProjectForm) {
@@ -104,26 +110,31 @@ class Addproj extends Component{
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post(SERVER_URL,formData)
-            .then( response => {
+        Axios.post(SERVER_URL, formData)
+            .then(response => {
                 console.log("data posted")
-                this.props.history.push( '/' );
-            } )
-            .catch( error => {
-                this.setState( { loading: false } );
-            } );
+                this.setState({
+                    snackbarMessage: "Project has been added!"
+                });
+                this.setState({ showSnackbar: true });
+                this.props.history.push('/');
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({ loading: false });
+            });
     }
 
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedOrderForm = {
             ...this.state.addProjectForm
         };
-        const updatedFormElement = { 
+        const updatedFormElement = {
             ...updatedOrderForm[inputIdentifier]
         };
         updatedFormElement.value = event.target.value;
         updatedOrderForm[inputIdentifier] = updatedFormElement;
-        this.setState({addProjectForm: updatedOrderForm});
+        this.setState({ addProjectForm: updatedOrderForm });
     }
     render() {
         const formElementsArray = [];
@@ -134,10 +145,41 @@ class Addproj extends Component{
             });
         }
 
+        let snackbar = null;
+        if (this.state.showSnackbar) {
+            //console.log("show snach bar");
+            snackbar = (
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right"
+                    }}
+                    open={true}
+                    autoHideDuration={5000}
+                    onClose={() => this.setState({ showSnackbar: false })}
+                    ContentProps={{
+                        "aria-describedby": "message-id"
+                    }}
+                    message={<span id="message-id">{this.state.snackbarMessage}</span>}
+                    action={[
+                        <IconButton
+                            key="close"
+                            aria-label="Close"
+                            color="inherit"
+                            className={classes.close}
+                            onClick={() => this.setState({ showSnackbar: false })}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    ]}
+                />
+            );
+        }
+
         let form = (
-            <form class="DefaultForm" onSubmit={this.addProjectHandler}>
+            <form onSubmit={this.addProjectHandler}>
                 {formElementsArray.map(formElement => (
-                    <Input 
+                    <Input
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
@@ -148,10 +190,16 @@ class Addproj extends Component{
             </form>
         );
         return (
-            <div className="Projects">
-                <h4>Enter your Contact Data</h4>
-                {form}
+            <div>
+                <div className={classes.DefaultForm}>
+                    <h4>Enter the details of your project</h4>
+                    {form}
+                </div>
+
+                {snackbar}
+
             </div>
+
         );
     }
 }

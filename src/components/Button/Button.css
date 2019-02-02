@@ -22,3 +22,12 @@
 .Danger {
     color: #944317;
 }
+
+.Button:active{
+    background-color:#5C9210;
+}
+
+.Button:hover{
+    background-color: #5C9210;
+    color:white;
+}
