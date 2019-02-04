@@ -117,10 +117,14 @@ class Addproj extends Component {
                     snackbarMessage: "Project has been added!"
                 });
                 this.setState({ showSnackbar: true });
-                this.props.history.push('/');
+                //this.props.history.push('/');
             })
             .catch(error => {
                 console.log(error);
+                this.setState({
+                    snackbarMessage: "Project name already exists!"
+                });
+                this.setState({ showSnackbar: true });
                 this.setState({ loading: false });
             });
     }
