@@ -3,6 +3,7 @@ import axios from 'axios'
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import classes from './searchbar.css';
+import SERVER_URL from '../static/Config/Config'
 
 
 class searchbar extends Component {
@@ -12,7 +13,7 @@ class searchbar extends Component {
     postfromProjects: []
   }
   componentDidMount() {
-    axios.get('http://127.0.0.1:5000/find/')
+    axios.get(SERVER_URL+'find/')
       .then(res => {
         console.log(res);
         this.setState({
@@ -28,7 +29,7 @@ class searchbar extends Component {
   }
   handleclick = (e) => {
     console.log(this.state.searchString);
-    axios.get('http://127.0.0.1:5000/find/?ftext='+ this.state.searchString)
+    axios.get(SERVER_URL+'find/?ftext='+ this.state.searchString)
       .then(res => {
         console.log(res);
         this.setState({
