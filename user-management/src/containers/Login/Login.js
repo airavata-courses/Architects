@@ -74,10 +74,10 @@ class Login extends Component {
     };
     console.log(this.state.email,this.state.password)
     axios
-    .post(SERVER_URL+"api/users/login", user)
+    .post(SERVER_URL+"/login", user)
     .then(res => {
       localStorage.setItem('authToken', res.data.token)
-      localStorage.setItem('isAdmin', res.data.admin)
+      //localStorage.setItem('isAdmin', res.data.admin)
       window.location.assign('/')
     })
     .catch(err => {
