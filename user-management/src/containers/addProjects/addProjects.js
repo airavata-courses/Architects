@@ -110,18 +110,24 @@ class Addproj extends Component {
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post(SERVER_URL, formData)
+        Axios.post(SERVER_URL+"addProjects", formData)
             .then(response => {
                 console.log("data posted")
                 this.setState({
                     snackbarMessage: "Project has been added!"
                 });
                 this.setState({ showSnackbar: true });
-                this.props.history.push('/');
+                window.location.assign('/')
+                //this.props.history.push('/');
             })
             .catch(error => {
                 console.log(error);
+                this.setState({
+                    snackbarMessage: "Error while inserting data"
+                });
+                this.setState({ showSnackbar: true });
                 this.setState({ loading: false });
+                window.location.assign('/')
             });
     }
 
