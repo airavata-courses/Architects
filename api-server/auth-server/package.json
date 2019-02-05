@@ -1,0 +1,27 @@
+{
+  "name": "login_backend",
+  "version": "1.0.0",
+  "description": "Back end logic for Login feature",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.9",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "scripts": {
+    "server": "node server.js",
+    "start": "nodemon server.js"
+  },
+  "author": "Deepak Hanumanthaiah",
+  "license": "MIT"
+}
