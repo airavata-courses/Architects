@@ -17,7 +17,7 @@ class Register extends Component {
             },
             value: ''
         },
-        lastName: {
+        LastName: {
             elementType: 'input',
             elementConfig: {
                 type: 'text',

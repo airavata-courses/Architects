@@ -99,6 +99,10 @@ class Addproj extends Component {
         }
     }
 
+    componentDidMount(){
+        localStorage.setItem("authToken","")
+    }
+
     addProjectHandler = (event) => {
         event.preventDefault();
         const formData = {};
