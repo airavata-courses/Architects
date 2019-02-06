@@ -1,0 +1,23 @@
+{
+    "searchModule": "http://localhost:5000",
+    "projectModule": "http://localhost:8080",
+    "userModule": "http://localhost:22000",
+    "client": {
+        "route": {
+            "postLogin": "/login",
+            "postProject": "/addProjects",
+            "postUser": "/register",
+            "getSearch": "/find"
+        }
+    },
+    "services": {
+        "route": {
+            "getUserForAuth": "/getuser",
+            "postProject": "/addProjects",
+            "postUser": "/register",
+            "getSearch": "/find"
+        }
+    },
+    "authServerLoc": "./auth-server/routes",
+    "routeServerLoc": "./route-server/routes"
+}
