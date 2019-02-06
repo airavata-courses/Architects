@@ -86,24 +86,19 @@ class Register extends Component {
         formData[formElementIdentifier] = this.state.addProjectForm[formElementIdentifier].value;
     }
     console.log(formData);
-    // const order = {
-    //     ingredients: this.props.ingredients,
-    //     price: this.props.price,
-    //     orderData: formData
-    // }
     Axios.post(SERVER_URL + '/register', formData)
         .then(response => {
             console.log("data posted")
             this.setState({
-                snackbarMessage: "Project has been added!"
+                snackbarMessage: "Registration Sucessful"
             });
             this.setState({ showSnackbar: true });
-            //this.props.history.push('/');
+            window.location.assign("/")
         })
         .catch(error => {
             console.log(error);
             this.setState({
-                snackbarMessage: "Project name already exists!"
+                snackbarMessage: "Could not register"
             });
             this.setState({ showSnackbar: true });
             this.setState({ loading: false });

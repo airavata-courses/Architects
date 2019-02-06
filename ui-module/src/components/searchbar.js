@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import classes from './searchbar.css';
 import SERVER_URL from '../static/Config/Config'
+import { FormHelperText } from '@material-ui/core';
 
 
 class searchbar extends Component {
@@ -13,11 +14,11 @@ class searchbar extends Component {
     postfromProjects: []
   }
   componentDidMount() {
-    axios.get(SERVER_URL+'find/')
+    axios.get(SERVER_URL + '/find/')
       .then(res => {
         console.log(res);
         this.setState({
-          postfromUser: res.data.ListfromUsers , //can use .slice method to get only a few
+          postfromUser: res.data.ListfromUsers, //can use .slice method to get only a few
           postfromProjects: res.data.ListfromProjects
         })
       })
@@ -29,7 +30,7 @@ class searchbar extends Component {
   }
   handleclick = (e) => {
     console.log(this.state.searchString);
-    axios.get(SERVER_URL+'find/?ftext='+ this.state.searchString)
+    axios.get(SERVER_URL + '/find/?ftext=' + this.state.searchString)
       .then(res => {
         console.log(res);
         this.setState({
@@ -41,42 +42,79 @@ class searchbar extends Component {
     e.preventDefault();
   }
 
+
+  addProjectButtonClick=()=>{
+    window.location.assign("/addProjects");
+  }
+
+  loginButtonClick=() => {
+    window.location.assign("/login")
+  }
   render() {
-    const { postfromProjects }=this.state;
-       const postList = postfromProjects.length ? (
-        postfromProjects.map(post => {
-               return(
-                   <div className={classes.Book} id={post._id}>
-                   <p>{post.projectName}</p>
-                   <p>{post.companyName}</p>
-                   <p>{post.numberOfPpl}</p>
-                   <p>{post.payPerHour}</p>
-                   <p>{post.projectDescription}</p>
-                   <p>{post.projectLocation}</p>
-                   <p>{post.projectDepartment}</p>
-                   </div>
-               )}))
-        :(
-           <div className="center"> No projects to be displayed </div>
-       );
-       
-       const { postfromUser }=this.state;
-       const postList1 = postfromUser.length ? (
-        postfromUser.map(post => {
-               return(
-                   <div className={classes.Book} id={post._id}>
-                   <p>{post.Name}</p>
-                   <p>{post.Age}</p>
-                   </div>
-               )}))
-        :(
-           <div className="center"> No Freelancers to be displayed </div>
-       );
-    
+    const { postfromProjects } = this.state;
+    const postList = postfromProjects.length ? (
+      postfromProjects.map(post => {
+        return (
+          <div className={classes.Book} id={post._id}>
+            <p>{post.projectName}</p>
+            <p>{post.companyName}</p>
+            <p>{post.numberOfPpl}</p>
+            <p>{post.payPerHour}</p>
+            <p>{post.projectDescription}</p>
+            <p>{post.projectLocation}</p>
+            <p>{post.projectDepartment}</p>
+          </div>
+        )
+      }))
+      : (
+        <div className="center"> No projects to be displayed </div>
+      );
+
+    const { postfromUser } = this.state;
+    const postList1 = postfromUser.length ? (
+      postfromUser.map(post => {
+        return (
+          <div className={classes.Book} id={post._id}>
+            <p>{post.Name}</p>
+            <p>{post.Age}</p>
+          </div>
+        )
+      }))
+      : (
+        <div className="center"> No Freelancers to be displayed </div>
+      );
+
     return (
       <div className="container-fluid">
         <div className="row">
-          <h1>9to5IT</h1>
+          <div style={{
+                display: "flex",
+                marginLeft: "20px"    
+              }}>
+
+            <h1 >9to5IT
+            </h1>
+            <Button
+              style={{
+                backgroundColor: "#424242"
+              }}
+              onClick={this.addProjectButtonClick}
+              variant="contained"
+              color="primary">
+              Add Projects
+              </Button>
+            <Button
+              style={{
+                backgroundColor: "#424242"
+              }}
+              onClick={this.loginButtonClick}
+              variant="contained"
+              color="primary">
+              Login
+              </Button>
+            
+          </div>
+
           <form onSubmit={this.handleclick}>
             <div className="Search">
               <div style={{ display: "flex" }}>
@@ -111,7 +149,7 @@ class searchbar extends Component {
         <div>
           <h4 className="center">PROJECTS</h4>
           <div className={classes.Disp}>
-           {postList}
+            {postList}
           </div>
           <h4> FREE LANCERS </h4>
           {postList1}

@@ -7,6 +7,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from '@material-ui/icons/Close';
 import Axios from 'axios'
+import { Redirect } from "react-router-dom";
 
 class Addproj extends Component {
     state = {
@@ -110,7 +111,7 @@ class Addproj extends Component {
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post(SERVER_URL+"addProjects", formData)
+        Axios.post(SERVER_URL+"/addProjects", formData)
             .then(response => {
                 console.log("data posted")
                 this.setState({
@@ -143,6 +144,12 @@ class Addproj extends Component {
         this.setState({ addProjectForm: updatedOrderForm });
     }
     render() {
+        console.log(localStorage.setItem("authToken",null))
+        if (localStorage.getItem("authToken") === null|| localStorage.getItem("authToken")===undefined) {
+            //console.log("", localStorage.getItem("authToken"));
+            console.log("hrererere")
+            return <Redirect to={{ pathname: "/login" }} />;
+          }
         const formElementsArray = [];
         for (let key in this.state.addProjectForm) {
             formElementsArray.push({

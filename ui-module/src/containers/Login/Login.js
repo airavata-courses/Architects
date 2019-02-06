@@ -76,14 +76,16 @@ class Login extends Component {
     axios
     .post(SERVER_URL+"/login", user)
     .then(res => {
+      console.log("Inside server response" + res)
       localStorage.setItem('authToken', res.data.token)
       //localStorage.setItem('isAdmin', res.data.admin)
       window.location.assign('/')
     })
     .catch(err => {
       console.log(err)
-      this.setState({ errors: err.response.data} 
-      )});
+      localStorage.setItem('authToken', "")
+      //this.setState({ errors: err.response.data}) 
+      });
 
   }
 
