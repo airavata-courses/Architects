@@ -75,8 +75,10 @@ class searchbar extends Component {
       postfromUser.map(post => {
         return (
           <div className={classes.Book} id={post._id}>
-            <p>{post.Name}</p>
-            <p>{post.Age}</p>
+            <p>{post.firstName}</p>
+            <p>{post.lastName}</p>
+            <p>{post.email}</p>
+            <p>{post.skills}</p> 
           </div>
         )
       }))
@@ -152,7 +154,9 @@ class searchbar extends Component {
             {postList}
           </div>
           <h4> FREE LANCERS </h4>
+          <div className={classes.Disp}>
           {postList1}
+      </div>
         </div>
       </div>
 
