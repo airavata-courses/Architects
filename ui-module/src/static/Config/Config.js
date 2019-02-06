@@ -1,2 +1,2 @@
-const SERVER_URL ="http://192.168.1.127:5000";
+const SERVER_URL ="http://localhost:4000";
 export default SERVER_URL;
