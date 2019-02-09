@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import logo from "./../../img/9to5IT.png";
 
 const styles = {
   root: {
@@ -41,7 +42,7 @@ class DenseAppBar extends Component {
           <Toolbar>
             <Typography variant="h6" color="inherit" style={{ flexGrow: "1" }}>
               <a href="/" className="AppBarButton" >
-                Book Buddies
+              <img src={logo} alt="no preview" height="40px" width="100px"></img>
             </a>
               <a id="request" href="/request" className="AppBarButton" onClick={() => underlineText("request")}>
                 Explore
