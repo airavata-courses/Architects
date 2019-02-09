@@ -5,7 +5,7 @@ module.exports = function validateRegisterInput(data) {
   let errors = {};
 
   data.firstName = !isEmpty(data.firstName) ? data.firstName : "";
-  data.LastName = !isEmpty(data.LastName) ? data.LastName : "";
+  data.lastName = !isEmpty(data.lastName) ? data.lastName : "";
   data.userName = !isEmpty(data.userName) ? data.userName : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
@@ -15,14 +15,14 @@ module.exports = function validateRegisterInput(data) {
   if (!Validator.isLength(data.firstName, { min: 2, max: 30 })) {
     errors.firstName = "firstName must be between 3 and 30 characters";
   }
-  if (!Validator.isLength(data.LastName, { min: 2, max: 30 })) {
-    errors.LastName = "LastName must be between 3 and 30 characters";
+  if (!Validator.isLength(data.lastName, { min: 2, max: 30 })) {
+    errors.lastName = "lastName must be between 3 and 30 characters";
   }
   if (Validator.isEmpty(data.firstName)) {
     errors.firstName = "firstName is required";
   }
-  if (Validator.isEmpty(data.LastName)) {
-    errors.LastName = "LastName is required";
+  if (Validator.isEmpty(data.lastName)) {
+    errors.lastName = "lastName is required";
   }
   if (Validator.isEmpty(data.email)) {
     errors.email = "Email is required";
