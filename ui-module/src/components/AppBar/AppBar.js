@@ -68,7 +68,7 @@ class DenseAppBar extends Component {
               ) : (
                   <a
                     id="logout"
-                    href="/"
+                    href="/logout"
                     className={classes.AppBarButton}
                     style={{ display: "flex" }}
                   >
