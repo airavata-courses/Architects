@@ -148,8 +148,8 @@ class Addproj extends Component {
         this.setState({ addProjectForm: updatedOrderForm });
     }
     render() {
-        console.log(localStorage.setItem("authToken",null))
-        if (localStorage.getItem("authToken") === null|| localStorage.getItem("authToken")===undefined) {
+       // console.log(localStorage.setItem("authToken",null))
+        if (localStorage.getItem("authToken") === ""|| localStorage.getItem("authToken")===undefined) {
             //console.log("", localStorage.getItem("authToken"));
             console.log("hrererere")
             return <Redirect to={{ pathname: "/login" }} />;

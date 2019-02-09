@@ -89,71 +89,40 @@ class searchbar extends Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div style={{
-                display: "flex",
-                marginLeft: "20px"    
-              }}>
-
-            <h1 >9to5IT
-            </h1>
-            <Button
-              style={{
-                backgroundColor: "#424242"
-              }}
-              onClick={this.addProjectButtonClick}
-              variant="contained"
-              color="primary">
-              Add Projects
-              </Button>
-            <Button
-              style={{
-                backgroundColor: "#424242"
-              }}
-              onClick={this.loginButtonClick}
-              variant="contained"
-              color="primary">
-              Login
-              </Button>
-            
-          </div>
-
           <form onSubmit={this.handleclick}>
             <div className="Search">
-              <div style={{ display: "flex" }}>
+              <div className={classes.Disp}>
                 <TextField
                   onChange={this.SearchchangeHandler}
                   id="outlined-full-width"
                   label="Search"
-                  style={{ margin: 8 }}
+                  style={{ margin: 8 ,width: "500px",marginLeft: 18}}
                   placeholder="Enter the name of Organization/Coder"
-                  fullWidth
                   margin="normal"
                   variant="outlined"
                   InputLabelProps={{
                     shrink: true
                   }}
                 />
-              </div>
-            </div>
-            <div className={classes.Button}>
-              <Button
+                <Button
                 style={{
-                  backgroundColor: "#424242"
+                  backgroundColor: "#3f51b5"
                 }}
                 onClick={this.handleclick}
                 variant="contained"
                 color="primary">
                 Search
               </Button>
+              </div>
             </div>
           </form>
         </div>
         <div>
-          <h4 className="center">PROJECTS</h4>
+          <h4 className={classes.Center}>PROJECTS</h4>
           <div className={classes.Disp}>
             {postList}
           </div>
-          <h4> FREE LANCERS </h4>
+          <h4 className={classes.Center}> FREE LANCERS </h4>
           <div className={classes.Disp}>
           {postList1}
       </div>

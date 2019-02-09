@@ -13,3 +13,14 @@
     text-decoration: none;
     color: black;
 }
+
+.AppBarButton {
+    text-decoration: none;
+    color: white;
+}
+
+.AppBarButton a {
+    text-decoration: none !important;
+    color: white;
+
+}
