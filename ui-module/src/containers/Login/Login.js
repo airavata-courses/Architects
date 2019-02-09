@@ -83,8 +83,8 @@ class Login extends Component {
     })
     .catch(err => {
       console.log(err)
-      localStorage.setItem('authToken', "")
-      //this.setState({ errors: err.response.data}) 
+     // localStorage.setItem('authToken', "")
+      this.setState({ errors: err.response.data}) 
       });
 
   }

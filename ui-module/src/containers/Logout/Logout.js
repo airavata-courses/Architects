@@ -61,7 +61,7 @@ class Logout extends Component {
 
     componentDidMount() {
         //console.log("calling component did mount logout")
-       localStorage.setItem('authToken',"");
+       localStorage.removeItem('authToken');
        // localStorage.removeItem('isAdmin');
     }
 
@@ -111,4 +111,4 @@ Logout.propTypes = {
     classes: PropTypes.object.isRequired,
   };
 
-export default withStyles(styles)(Logout);;
+export default withStyles(styles)(Logout);

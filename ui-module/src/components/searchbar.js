@@ -13,6 +13,7 @@ class searchbar extends Component {
     postfromUser: [],
     postfromProjects: []
   }
+
   componentDidMount() {
     axios.get(SERVER_URL + '/find/')
       .then(res => {

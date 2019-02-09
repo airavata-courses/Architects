@@ -99,10 +99,6 @@ class Addproj extends Component {
         }
     }
 
-    componentDidMount(){
-        localStorage.setItem("authToken","")
-    }
-
     addProjectHandler = (event) => {
         event.preventDefault();
         const formData = {};
@@ -115,7 +111,7 @@ class Addproj extends Component {
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post(SERVER_URL+"/addProjects", formData)
+        Axios.post("http://localhost:8080"+"/addProjects", formData)
             .then(response => {
                 console.log("data posted")
                 this.setState({
@@ -149,7 +145,9 @@ class Addproj extends Component {
     }
     render() {
        // console.log(localStorage.setItem("authToken",null))
-        if (localStorage.getItem("authToken") === ""|| localStorage.getItem("authToken")===undefined) {
+       console.log(localStorage.getItem("authToken"))
+       console.log(localStorage.getItem("authToken1234"))
+        if (localStorage.getItem("authToken") === null || localStorage.getItem("authToken")===undefined) {
             //console.log("", localStorage.getItem("authToken"));
             console.log("hrererere")
             return <Redirect to={{ pathname: "/login" }} />;

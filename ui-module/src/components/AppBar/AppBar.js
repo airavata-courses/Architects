@@ -61,7 +61,7 @@ class DenseAppBar extends Component {
             </a>
             </Typography>
             <Typography variant="h6" color="inherit">
-              {localStorage.getItem("authToken") === "" ? (
+              {localStorage.getItem("authToken") === null ? (
                 <a id="login" href="/login" className={classes.AppBarButton}>
                   Login
               </a>
