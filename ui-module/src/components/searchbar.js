@@ -56,7 +56,7 @@ class searchbar extends Component {
     const postList = postfromProjects.length ? (
       postfromProjects.map(post => {
         return (
-          <div className={classes.Book} id={post._id}>
+          <div className={classes.Search} id={post._id}>
             <p>{post.projectName}</p>
             <p>{post.companyName}</p>
             <p>{post.numberOfPpl}</p>
@@ -75,7 +75,7 @@ class searchbar extends Component {
     const postList1 = postfromUser.length ? (
       postfromUser.map(post => {
         return (
-          <div className={classes.Book} id={post._id}>
+          <div className={classes.Search} id={post._id}>
             <p>{post.firstName}</p>
             <p>{post.lastName}</p>
             <p>{post.email}</p>
