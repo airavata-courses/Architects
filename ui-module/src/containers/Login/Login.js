@@ -54,7 +54,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -64,6 +64,7 @@ class Login extends Component {
   onChange(e) {
     console.log("changed")
     this.setState({ [e.target.name]: e.target.value });
+    this.setState({errors:""});
   }
 
   onSubmit(e) {
@@ -84,7 +85,9 @@ class Login extends Component {
     .catch(err => {
       console.log(err)
      // localStorage.setItem('authToken', "")
-      this.setState({ errors: err.response.data}) 
+     console.log(err.response)
+      this.setState({ errors: "Invalid cerdentials"}) 
+      //err.response.data""
       });
 
   }
@@ -92,13 +95,16 @@ class Login extends Component {
 
 render() {
   const { classes } = this.props
+  const { errors }= this.state
   return (
     <main className={classes.main}>
       <CssBaseline />
+      <div style={{color:"red"}}>
+      {errors}
+      </div>
+
       <div className="RegisterForm">
-        <Typography component="h1" variant="h5">
-        9to5It
-        </Typography>
+       
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">User Name</InputLabel>
