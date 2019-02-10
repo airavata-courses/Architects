@@ -107,7 +107,7 @@ render() {
        
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">User Name</InputLabel>
+            <InputLabel htmlFor="email">Email ID</InputLabel>
             <Input id="email" name="email" autoComplete="email" autoFocus 
              value={this.state.email}
              onChange={this.onChange}  />
