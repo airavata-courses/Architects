@@ -11,8 +11,10 @@ router.post("/",
           return res.json(Response.data);       
         })
         .catch(error => {
-          console.log(error);
-          res.json(error);
+          //console.log(error);
+          errors.data="Unable to register"
+          return res.status(400).json(errors);
+         // res.json(error);
         });
   }
 );

@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
     console.log(login.data);
   if (!login.data) {
     console.log(login);
-    errors.email = "User email not found";
+    errors.data = "User email not found";
     return res.status(404).json(errors);
   }
   bcrypt.compare(password, login.data.password).then(isMatch => {
@@ -46,11 +46,16 @@ router.post("/", (req, res) => {
       }
     
        else {
-        errors.password = "Password incorrect";
+        errors.data = "Password incorrect";
          return res.status(400).json(errors);
        }
     });
-  }).catch(error => {console.log(error)});
+  })
+  .catch(error => {
+    errors.data="Email Incorrect";
+    return res.status(400).json(errors);
+    //console.log(error)
+  });
 });
 
 module.exports = router;
