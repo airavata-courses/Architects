@@ -12,6 +12,7 @@ import { Redirect } from "react-router-dom";
 class Addproj extends Component {
     state = {
         showSnackbar: false,
+        errors: "",
         snackbarMessage: "",
         addProjectForm: {
             projectName: {
@@ -86,21 +87,8 @@ class Addproj extends Component {
                 },
                 value: ''
             },
-            // deliveryMethod: {
-            //     elementType: 'select',
-            //     elementConfig: {
-            //         options: [
-            //             {value: 'fastest', displayValue: 'Fastest'},
-            //             {value: 'cheapest', displayValue: 'Cheapest'}
-            //         ]
-            //     },
-            //     value: ''
-            // }
-        }
-    }
+           }
 
-    componentDidMount(){
-        localStorage.setItem("authToken","")
     }
 
     addProjectHandler = (event) => {
@@ -115,7 +103,7 @@ class Addproj extends Component {
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post(SERVER_URL+"/addProjects", formData)
+        Axios.post("http://localhost:8080" + "/addProjects", formData)
             .then(response => {
                 console.log("data posted")
                 this.setState({
@@ -132,7 +120,8 @@ class Addproj extends Component {
                 });
                 this.setState({ showSnackbar: true });
                 this.setState({ loading: false });
-                window.location.assign('/')
+                this.setState({ errors: "Invaild Data entered" });
+                //window.location.assign('/')
             });
     }
 
@@ -146,14 +135,18 @@ class Addproj extends Component {
         updatedFormElement.value = event.target.value;
         updatedOrderForm[inputIdentifier] = updatedFormElement;
         this.setState({ addProjectForm: updatedOrderForm });
+        this.setState({ errors: "" });
     }
     render() {
-        console.log(localStorage.setItem("authToken",null))
-        if (localStorage.getItem("authToken") === null|| localStorage.getItem("authToken")===undefined) {
+        // console.log(localStorage.setItem("authToken",null))
+        const { errors } = this.state
+        console.log(localStorage.getItem("authToken"))
+        console.log(localStorage.getItem("authToken1234"))
+        if (localStorage.getItem("authToken") === null || localStorage.getItem("authToken") === undefined) {
             //console.log("", localStorage.getItem("authToken"));
             console.log("hrererere")
             return <Redirect to={{ pathname: "/login" }} />;
-          }
+        }
         const formElementsArray = [];
         for (let key in this.state.addProjectForm) {
             formElementsArray.push({
@@ -208,9 +201,14 @@ class Addproj extends Component {
         );
         return (
             <div>
+              
                 <div className={classes.DefaultForm}>
+                <div style={{ color: "red" }}>
+                    {errors}
+                </div>
                     <h4>Enter the details of your project</h4>
                     {form}
+                   
                 </div>
 
                 {snackbar}

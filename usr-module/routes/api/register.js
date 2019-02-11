@@ -16,8 +16,8 @@ router.post("/register", (req, res) => {
         if (register) {
           errors.email = "Email already exists";
           return res.status(400).json(errors);
-        }});
-        const newUser = new Register({
+        } else {
+          const newUser = new Register({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             userName: req.body.userName,
@@ -26,7 +26,6 @@ router.post("/register", (req, res) => {
             skills: req.body.skills,
             contactNumber: req.body.contactNumber,
             userType: req.body.userType
-
           });
           bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -38,6 +37,8 @@ router.post("/register", (req, res) => {
                 .catch(err => console.log(err));
             });
           });
+          
+        }});
 })
 
 
