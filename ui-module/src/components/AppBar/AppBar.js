@@ -69,6 +69,7 @@ class DenseAppBar extends Component {
                   <a
                     id="logout"
                     href="/logout"
+                    onClick={() => {localStorage.removeItem('authToken');}}
                     className={classes.AppBarButton}
                     style={{ display: "flex" }}
                   >
