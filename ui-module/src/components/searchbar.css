@@ -6,7 +6,7 @@
     box-shadow: 0 2px 3px #ccc;
     margin: 10px;
     box-sizing: border-box;
-    cursor: pointer;
+    /*cursor: pointer;*/
     border-color: black;
   }
   .Disp{
