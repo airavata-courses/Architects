@@ -61,7 +61,7 @@ class Logout extends Component {
 
     componentDidMount() {
         //console.log("calling component did mount logout")
-       localStorage.removeItem('authToken');
+       // No need, issue: #68:  localStorage.removeItem('authToken');
        // localStorage.removeItem('isAdmin');
     }
 
