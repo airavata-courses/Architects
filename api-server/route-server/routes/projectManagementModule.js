@@ -15,8 +15,9 @@ router.post("/",
           return res.set(Response.data);
         })
         .catch(error => {
-          return res.set(error);
-          console.log(error);
+          errors.data="Unable to add projects"
+          return res.status(400).json(errors);
+         // console.log(error);
         });
     }
 );

@@ -12,7 +12,9 @@ router.get("/",
           res.json(Response.data);
         })
         .catch(error => {
-          console.log(error);
+          errors.data="Something went wrong with the server. Please try again later!"
+          return res.status(400).json(errors);
+          //console.log(error);
         });
   }
 );
