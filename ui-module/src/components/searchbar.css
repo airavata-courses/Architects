@@ -1,4 +1,4 @@
-.Book {
+.Search {
     width: 300px;
     padding: 16px;
     text-align: center;
@@ -6,15 +6,24 @@
     box-shadow: 0 2px 3px #ccc;
     margin: 10px;
     box-sizing: border-box;
-    cursor: pointer;
+    /*cursor: pointer;*/
     border-color: black;
   }
   .Disp{
   display: flex;
     flex-flow: row wrap;
+    margin-left: 16px;
   }
   .Button{
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .SearchBarDiv{
+    padding:16px;
+  }
+
+  .Center{
+    margin-left: 16px;
   }
