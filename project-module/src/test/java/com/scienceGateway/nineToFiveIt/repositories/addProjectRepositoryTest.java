@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.junit.Test;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
@@ -21,21 +23,27 @@ public class addProjectRepositoryTest {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @Before
+   @Before
     public void setup(){
-        mongoTemplate.dropCollection(Projects.class);
+       deleteProject("SGASpring2019january1st");
+       deleteProject("ASGSpring2019january1st");
     }
 
     @After
     public void tearDown(){
-        mongoTemplate.dropCollection(Projects.class);
+        deleteProject("SGASpring2019january1st");
+        deleteProject("ASGSpring2019january1st");
     }
 
+
+    public void deleteProject(String projectName) {
+        mongoTemplate.remove(Query.query(Criteria.where("projectName").is(projectName)), Projects.class);
+    }
 
     @Test
     public void TestAddAndFindProject(){
         Projects project1=new Projects(
-                "SGA",
+                "SGASpring2019january1st",
                 "9to5It",
                 "10",
                 "10",
@@ -47,7 +55,7 @@ public class addProjectRepositoryTest {
             );
 
         Projects project2=new Projects(
-                "ASG",
+                "ASGSpring2019january1st",
                 "9to5It",
                 "10",
                 "10",
@@ -61,8 +69,8 @@ public class addProjectRepositoryTest {
         addProjectRepository.save(project1);
         addProjectRepository.save(project2);
 
-        assertEquals(project1.getCompanyName(),addProjectRepository.findByProjectName("SGA").getCompanyName());
-        assertEquals(project1.getCompanyName(),addProjectRepository.findByProjectName("ASG").getCompanyName());
+        assertEquals(project1.getCompanyName(),addProjectRepository.findByProjectName("SGASpring2019january1st").getCompanyName());
+        assertEquals(project1.getCompanyName(),addProjectRepository.findByProjectName("ASGSpring2019january1st").getCompanyName());
         assertNull(addProjectRepository.findByProjectName("asd"));
 
     }
