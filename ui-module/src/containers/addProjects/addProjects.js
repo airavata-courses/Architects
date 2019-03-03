@@ -103,7 +103,12 @@ class Addproj extends Component {
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post("http://localhost:8080" + "/addProjects", formData)
+        const config = {
+            headers: {
+              Authorization: localStorage.getItem("authToken")
+            }
+          };
+        Axios.post(SERVER_URL + "/addProjects", formData,config)
             .then(response => {
                 console.log("data posted")
                 this.setState({
