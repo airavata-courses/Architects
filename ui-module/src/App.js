@@ -7,7 +7,12 @@ import Register from './containers/Register/Register';
 import Appbar from "./components/AppBar/AppBar";
 import Logout from './containers/Logout/Logout';
 
+
 class App extends Component {
+
+  componentDidMount(){
+    
+  }
   render() {
     return (
       <Router>
