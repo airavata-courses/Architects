@@ -103,7 +103,7 @@ class Addproj extends Component {
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post("http://localhost:8080" + "/addProjects", formData)
+        Axios.post(SERVER_URL+ "/addProjects", formData)
             .then(response => {
                 console.log("data posted")
                 this.setState({
