@@ -51,6 +51,6 @@ public class AddProjectController {
             return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
         }
 
-        return new ResponseEntity(HttpStatus.ACCEPTED);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
