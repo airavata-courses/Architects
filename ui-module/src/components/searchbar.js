@@ -23,6 +23,9 @@ class searchbar extends Component {
           postfromProjects: res.data.ListfromProjects
         })
       })
+      .catch(error=>{
+        console.log(error)
+      })
   }
   SearchchangeHandler = (e) => {
     this.setState({
@@ -38,6 +41,9 @@ class searchbar extends Component {
           postfromProjects: res.data.ListfromProjects,  //can use .slice method to get only a few
           postfromUser: res.data.ListfromUsers
         })
+      })
+      .catch(error=>{
+        console.log(error)
       });
 
     e.preventDefault();
@@ -52,6 +58,7 @@ class searchbar extends Component {
     window.location.assign("/login")
   }
   render() {
+   // console.log("Pritnting url api server: "+ process.env.connectionString);
     const { postfromProjects } = this.state;
     const postList = postfromProjects.length ? (
       postfromProjects.map(post => {
