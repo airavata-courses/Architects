@@ -98,12 +98,17 @@ class Addproj extends Component {
             formData[formElementIdentifier] = this.state.addProjectForm[formElementIdentifier].value;
         }
         console.log(formData);
+        const config = {
+            headers: {
+              Authorization: localStorage.getItem("authToken")
+            }
+          };
         // const order = {
         //     ingredients: this.props.ingredients,
         //     price: this.props.price,
         //     orderData: formData
         // }
-        Axios.post(SERVER_URL+ "/addProjects", formData)
+        Axios.post(SERVER_URL+ "/addProjects", formData,config)
             .then(response => {
                 console.log("data posted")
                 this.setState({
@@ -140,8 +145,8 @@ class Addproj extends Component {
     render() {
         // console.log(localStorage.setItem("authToken",null))
         const { errors } = this.state
-        console.log(localStorage.getItem("authToken"))
-        console.log(localStorage.getItem("authToken1234"))
+       // console.log(localStorage.getItem("authToken"))
+       // console.log(localStorage.getItem("authToken1234"))
         if (localStorage.getItem("authToken") === null || localStorage.getItem("authToken") === undefined) {
             //console.log("", localStorage.getItem("authToken"));
             console.log("hrererere")
