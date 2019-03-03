@@ -7,4 +7,6 @@ Spring 2019 Project Team
 
 # Assignment 1 :
 https://github.com/airavata-courses/Architects/wiki/9to5IT-:-Assignment-1
+
+https://github.com/airavata-courses/Architects/wiki/9T05IT:-Milestone-2
  
