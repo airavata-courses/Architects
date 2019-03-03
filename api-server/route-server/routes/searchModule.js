@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Axios = require("axios");
-//const register = require("../../static/Registry.json");
+const register = require("../../static/Registry.json");
 const zkObject=require("../../auth-server/zookeeper/zookeeper.js");
 
 router.get("/",
@@ -18,6 +18,18 @@ let connectionString
   .then(data=>{
     connectionString="http://"+data
     console.log(data + "data")
+      // console.log("temporary data"+ temp)
+      const errors = {};
+      console.log(`Connectingsss to : ${connectionString + register.services.route.getSearch}  ${req.url}`)
+      Axios.get(connectionString + register.services.route.getSearch + req.url )
+          .then((Response) => {
+            res.json(Response.data);
+          })
+          .catch(error => {
+            errors.data="Something went wrong with the server. Please try again later!"
+            return res.status(400).json(errors);
+            //console.log(error);
+          });
   })
   .catch(error=>{
     console.log(error+"erorr")
@@ -25,18 +37,7 @@ let connectionString
   });
 
 
-  // console.log("temporary data"+ temp)
-    const errors = {};
-    //console.log(`Connectingsss to : ${register.searchModule + register.services.route.getSearch}  ${req.url}`)
-    Axios.get(connectionString + register.services.route.getSearch + req.url )
-        .then((Response) => {
-          res.json(Response.data);
-        })
-        .catch(error => {
-          errors.data="Something went wrong with the server. Please try again later!"
-          return res.status(400).json(errors);
-          //console.log(error);
-        });
+
   }
 );
 

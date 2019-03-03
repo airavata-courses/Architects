@@ -6,11 +6,12 @@ import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
 import Appbar from "./components/AppBar/AppBar";
 import Logout from './containers/Logout/Logout';
-//import ZooKeeper from ''
+
+
 class App extends Component {
 
   componentDidMount(){
-    console.log("App.js component did mount")
+    
   }
   render() {
     return (

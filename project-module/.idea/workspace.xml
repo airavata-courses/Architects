@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9adeacd-5d34-4fd0-8377-845367c8f1d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../api-server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../api-server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-server/route-server/routes/projectManagementModule.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-server/route-server/routes/projectManagementModule.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api-server/route-server/routes/searchModule.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-server/route-server/routes/searchModule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-server/route-server/routes/userManagementModule.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-server/route-server/routes/userManagementModule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/../api-server/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/scienceGateway/nineToFiveIt/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scienceGateway/nineToFiveIt/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scienceGateway/nineToFiveIt/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scienceGateway/nineToFiveIt/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/scienceGateway/nineToFiveIt/repositories/addProjectRepositoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/scienceGateway/nineToFiveIt/repositories/addProjectRepositoryTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../usr-module/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../usr-module/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../usr-module/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/../usr-module/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../search-filter/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/../search-filter/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui-module/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ui-module/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui-module/scripts/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui-module/scripts/start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui-module/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui-module/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui-module/src/components/searchbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui-module/src/components/searchbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui-module/src/static/Config/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ui-module/src/static/Config/Config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -165,7 +161,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.257886" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -176,7 +171,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
