@@ -2,15 +2,35 @@ const router = require("express").Router();
 const Axios = require("axios");
 const register = require("../../static/Registry.json");
 const passport = require("passport");
+const zkObject=require("../../auth-server/zookeeper/zookeeper.js");
 
 router.post("/",
   passport.authenticate("jwt", {
     session: false
   }),
   (req, res) => {
-    //console.log(req);
+
+
+    const zookeeperData=zkObject.znodeData;
+    const zooKeeperExists=zkObject.znodeExists;
+    console.log("add projects !! connecting string ");
+    let connectionString
+    zooKeeperExists("/ensemble/addProjects")
+    .then(doesExist=>{
+      return zookeeperData("/ensemble/addProjects")
+    })
+    .then(data=>{
+      connectionString="http://"+data
+      console.log(data + "data")
+    })
+    .catch(error=>{
+      console.log(error+"erorr")
+      return res.status(400).json(error);
+    });
+
+
     const errors = {};
-    sAxios.post(register.projectModule+ register.services.route.postProject, req.body )
+    Axios.post(connectionString+ register.services.route.postProject, req.body )
         .then((Response) => {
           return res.set(Response.data);
         })

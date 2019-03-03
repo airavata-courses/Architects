@@ -10,14 +10,16 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "ip": "^1.1.5",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.9",
+    "node-zookeeper-client": "^0.2.3",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.11.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.10"
   },
   "scripts": {
     "server": "node server.js",

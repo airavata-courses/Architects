@@ -15,6 +15,7 @@ class searchbar extends Component {
   }
 
   componentDidMount() {
+    console.log("Search component did mount")
     axios.get(SERVER_URL + '/find/')
       .then(res => {
         console.log(res);

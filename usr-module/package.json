@@ -9,7 +9,9 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "ip": "^1.1.5",
     "mongoose": "^5.4.9",
+    "node-zookeeper-client": "^0.2.3",
     "validator": "^10.11.0"
   },
   "devDependencies": {

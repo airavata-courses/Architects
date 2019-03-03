@@ -1,0 +1,8 @@
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\model\DatabaseSequence.java
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\model\Projects.java
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\repositories\AddProjectRepository.java
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\configuration\CorsConfiguration.java
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\events\AddProjectListener.java
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\controller\AddProjectController.java
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\Application.java
+D:\science_gateway\Architects\project-module\src\main\java\com\scienceGateway\nineToFiveIt\services\SequenceGeneratorService.java

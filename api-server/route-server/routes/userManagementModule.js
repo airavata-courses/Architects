@@ -1,10 +1,32 @@
 const router = require("express").Router();
 const Axios = require("axios");
 const register = require("../../static/Registry.json");
+const zkObject=require("../../auth-server/zookeeper/zookeeper.js");
 
 router.post("/",
   (req, res) => {
     console.log(req);
+
+
+    const zookeeperData=zkObject.znodeData;
+    const zooKeeperExists=zkObject.znodeExists;
+    console.log("User Management !! connecting string ");
+    let connectionString
+    zooKeeperExists("/ensemble/userManagement")
+    .then(doesExist=>{
+      return zookeeperData("/ensemble/userManagement")
+    })
+    .then(data=>{
+      connectionString="http://"+data
+      console.log(data + "data")
+    })
+    .catch(error=>{
+      return res.status(400).json(error);
+    });
+
+
+
+
     const errors = {};
     Axios.post(register.userModule+register.services.route.postUser, req.body )
         .then((Response) => {
