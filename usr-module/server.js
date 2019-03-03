@@ -22,6 +22,6 @@ mongoose
   app.use("/getuser", getuser);
 
 
-  const port= process.env.PORT || 22000
+  const port= process.env.PORT || 5000
 
   app.listen(port, () => console.log(`Server started on port ${port}`));
