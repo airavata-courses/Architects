@@ -9,7 +9,7 @@ Spring 2019 Project Team
 
 https://github.com/airavata-courses/Architects/wiki/9to5IT-:-Milestone-1
 
-# Milestone 1 :
+# Milestone 2 :
 
 https://github.com/airavata-courses/Architects/wiki/9T05IT:-Milestone-2
  
