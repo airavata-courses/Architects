@@ -20,6 +20,7 @@ public class AddProjectController {
        // Projects project=new Projects(request.getParameter("projectId"),"9to5It",request.getParameter("companyName"),10,250,20,"adasdsda","bng","CS","http://sads");
 
 //        System.out.println(project.getCompanyName());
+//		  System.out.println(project.getNumberOfHours());    	
 //        System.out.println(project.getProjectId());
 
         if(project.getProjectName()== "" ||
