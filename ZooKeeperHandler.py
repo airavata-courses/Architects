@@ -14,7 +14,7 @@ class ZookeeperHandler:
         zk.start()
         path = '/ensemble/find'
         host= str(requests.get('https://ip.42.pl/raw').text) # AuthServices
-        pass_data="192.168.1.127"+":"+port
+        pass_data=host+":"+port
         try:
             zk.create(path,value=pass_data, ephemeral=True, makepath=True)
         except NodeExistsError:
