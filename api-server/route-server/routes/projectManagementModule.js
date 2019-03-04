@@ -5,9 +5,9 @@ const passport = require("passport");
 const zkObject=require("../../auth-server/zookeeper/zookeeper.js");
 
 router.post("/",
-  passport.authenticate("jwt", {
-    session: false
-  }),
+  //passport.authenticate("jwt", {
+    //session: false
+  //}),
   (req, res) => {
 
 
