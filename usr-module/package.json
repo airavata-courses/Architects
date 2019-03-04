@@ -12,6 +12,7 @@
     "ip": "^1.1.5",
     "mongoose": "^5.4.9",
     "node-zookeeper-client": "^0.2.3",
+    "public-ip": "^3.0.0",
     "validator": "^10.11.0"
   },
   "devDependencies": {
