@@ -6,6 +6,7 @@ const validateLoginInput=require("../validation/login");
 const jwt = require("jsonwebtoken");
 const Axios = require("axios");
 const register = require("../../static/Registry.json");
+const zkObject = require("../zookeeper/zookeeper");
 
 router.post("/", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
