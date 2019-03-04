@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
     const password = req.body.password;
   
       console.log(req.body.email);
-    Axios.get(register.userModule+ register.services.route.getUserForAuth+"/"+ req.body.email).then(login => {
+    Axios.get(connectionString + register.services.route.getUserForAuth+"/"+ req.body.email).then(login => {
       console.log(login.data);
     if (!login.data) {
       console.log(login);
