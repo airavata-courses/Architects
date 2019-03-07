@@ -24,17 +24,18 @@ router.post("/",
       const errors = {};
       Axios.post(connectionString+ register.services.route.postProject, req.body )
           .then((Response) => {
-            return res.set(Response.data);
+	    console.log("****************In then of add project API server **********\n")
+            return res.status(200).json(Response.data);
           })
           .catch(error => {
-            errors.data="Unable to add projects"
-            return res.status(400).json(errors);
+            error.data="Unable to add projects"
+            return res.status(400).json(error);
            // console.log(error);
           });
       console.log(data + "data")
     })
     .catch(error=>{
-      console.log(error+"erorr")
+      console.log(error+"erorr***********************************************************")
       return res.status(400).json(error);
     });
 
