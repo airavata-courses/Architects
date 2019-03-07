@@ -1,5 +1,5 @@
 'use strict';
-const ip=require('ip');
+const publicIp = require('public-ip');
 const ZooKeeper = require('node-zookeeper-client');
 //var fs = require('fs');
 
@@ -37,6 +37,7 @@ const createDevServerConfig = require('../config/webpackDevServer.config');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
+ const client = ZooKeeper.createClient('149.165.171.39:2181',{ sessionTimeout: 5000 });
 
 //const serverUrl=require("../src/static/Config/Config")
 // Warn and crash if required files are missing
@@ -107,6 +108,24 @@ checkBrowsers(paths.appPath, isInteractive)
       console.log(chalk.cyan('Starting the development server...\n'));
       
       console.log("Start *************")
+      
+      publicIp.v4().then(ip => {
+      console.log("here")
+      console.log(client)
+      client.once('connected', function () {
+      console.log('Connected to the server.');
+  
+      client.create("/ensemble/uiModule",new Buffer(ip +":4000"),ZooKeeper.CreateMode.EPHEMERAL, function (error) {
+         if (error) {
+             console.log('Failed to create node: %s due to: %s.', error);
+         } else {
+             console.log('Node: %s is successfully created.');
+         }
+  
+         //client.close();
+     });
+ });
+});
       client.connect();
       
       checkNodeExists("/ensemble/apiServer")
@@ -149,26 +168,8 @@ checkBrowsers(paths.appPath, isInteractive)
     }
     process.exit(1);
   });
-
-
-
-  console.log("Search component did mount")
-  const client = ZooKeeper.createClient('149.165.171.39:2181',{ sessionTimeout: 5000 });
-  console.log("here")
-  console.log(client)
-  client.once('connected', function () {
-     console.log('Connected to the server.');
   
-     client.create("/ensemble/uiModule",new Buffer(ip.address() +":4000"),ZooKeeper.CreateMode.EPHEMERAL, function (error) {
-         if (error) {
-             console.log('Failed to create node: %s due to: %s.', error);
-         } else {
-             console.log('Node: %s is successfully created.');
-         }
-  
-         //client.close();
-     });
- });
+ 
 
  const checkNodeExists=(path)=>{
   const zookeeperClient=client;

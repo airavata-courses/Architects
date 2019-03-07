@@ -1,2 +1,2 @@
-const SERVER_URL="http://192.168.1.79:4000";
+const SERVER_URL="http://149.165.170.240:4000";
 export default SERVER_URL;
