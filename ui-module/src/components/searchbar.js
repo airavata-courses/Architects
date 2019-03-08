@@ -3,7 +3,7 @@ import axios from 'axios'
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import classes from './searchbar.css';
-import SERVER_URL from '../static/Config/Config'
+import SERVER_URL from '../static/Config/Config';
 import { FormHelperText } from '@material-ui/core';
 
 
@@ -11,16 +11,31 @@ class searchbar extends Component {
   state = {
     searchString: "",
     postfromUser: [],
-    postfromProjects: []
+    postfromProjects: [],
+    freelancers: [],
+    organization: []
   }
 
   componentDidMount() {
-    axios.get(SERVER_URL + '/find/')
+    axios.get(SERVER_URL+'/find/')
       .then(res => {
-        console.log(res);
         this.setState({
           postfromUser: res.data.ListfromUsers, //can use .slice method to get only a few
           postfromProjects: res.data.ListfromProjects
+        })
+        let tempFreelancers=this.state.postfromUser.filter(userOrganization=>{
+          if(userOrganization.userType == "freeLancer"){
+            return userOrganization;
+          }
+        })
+        let tempOrganization=this.state.postfromUser.filter(userOrganization=>{
+          if(userOrganization.userType == "organization"){
+            return userOrganization;
+          }
+        })
+        this.setState({
+          freelancers:tempFreelancers,
+          organization:tempOrganization
         })
       })
       .catch(error=>{
@@ -33,8 +48,7 @@ class searchbar extends Component {
     })
   }
   handleclick = (e) => {
-    console.log(this.state.searchString);
-    axios.get(SERVER_URL + '/find/?ftext=' + this.state.searchString)
+    axios.get(SERVER_URL+ '/find/?ftext=' + this.state.searchString)
       .then(res => {
         console.log(res);
         this.setState({
@@ -78,21 +92,40 @@ class searchbar extends Component {
         <div className="center"> No projects to be displayed </div>
       );
 
-    const { postfromUser } = this.state;
-    const postList1 = postfromUser.length ? (
-      postfromUser.map(post => {
+
+      const { freelancers } = this.state;
+    const freeLancers = freelancers.length ? (
+      freelancers.map(freelancers => {
         return (
-          <div className={classes.Search} id={post._id}>
-            <p>{post.firstName}</p>
-            <p>{post.lastName}</p>
-            <p>{post.email}</p>
-            <p>{post.skills}</p> 
+          <div className={classes.Search} id={freelancers._id}>
+            <p>{freelancers.firstName}</p>
+            <p>{freelancers.lastName}</p>
+            <p>{freelancers.email}</p>
+            <p>{freelancers.skills}</p> 
           </div>
         )
       }))
       : (
         <div className="center"> No Freelancers to be displayed </div>
       );
+
+
+      const { organization } = this.state;
+      const postList3 = organization.length ? (
+        organization.map(organization => {
+          return (
+            <div className={classes.Search} id={organization._id}>
+              <p>{organization.firstName}</p>
+              <p>{organization.lastName}</p>
+              <p>{organization.email}</p>
+              <p>{organization.skills}</p> 
+            </div>
+          )
+        }))
+        : (
+          <div className="center"> No Freelancers to be displayed </div>
+        );
+
 
     return (
       <div className="container-fluid">
@@ -126,14 +159,25 @@ class searchbar extends Component {
           </form>
         </div>
         <div>
+          
+        <h4 className={classes.Center}> ORGANIZATIONS</h4>
+          <div className={classes.Disp}>
+          {postList3}
+      </div>
+
           <h4 className={classes.Center}>PROJECTS</h4>
           <div className={classes.Disp}>
             {postList}
           </div>
-          <h4 className={classes.Center}> FREE LANCERS </h4>
+          
+
+      <h4 className={classes.Center}> FREE LANCERS </h4>
           <div className={classes.Disp}>
-          {postList1}
+          {freeLancers}
       </div>
+
+      
+
         </div>
       </div>
 
