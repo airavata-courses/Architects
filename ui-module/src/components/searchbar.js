@@ -48,13 +48,28 @@ class searchbar extends Component {
     })
   }
   handleclick = (e) => {
-    axios.get(SERVER_URL+ '/find/?ftext=' + this.state.searchString)
+    axios.get(SERVER_URL + '/find/?ftext=' + this.state.searchString)
       .then(res => {
         console.log(res);
         this.setState({
-          postfromProjects: res.data.ListfromProjects,  //can use .slice method to get only a few
+          postfromProjects: res.data.ListfromProjects,  
           postfromUser: res.data.ListfromUsers
         })
+        let tempFreelancers=this.state.postfromUser.filter(userOrganization=>{
+          if(userOrganization.userType == "freeLancer"){
+            return userOrganization;
+          }
+        })
+        let tempOrganization=this.state.postfromUser.filter(userOrganization=>{
+          if(userOrganization.userType == "organization"){
+            return userOrganization;
+          }
+        })
+        this.setState({
+          freelancers:tempFreelancers,
+          organization:tempOrganization
+        })
+
       })
       .catch(error=>{
         console.log(error)
