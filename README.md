@@ -16,4 +16,4 @@ https://github.com/airavata-courses/Architects/wiki/9T05IT:-Milestone-2
 
 # Milestone 3 :
 
-https://github.com/airavata-courses/Architects/wiki/9T05IT:-Milestone-3
+https://github.com/airavata-courses/Architects/wiki/9to5IT-:-Milestone-3
