@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+        name: add-project-module
+        namespace: ingress-nginx
+        labels:
+                app: add-project-replica-set
+                type: replica-set
+spec:
+        template:
+                metadata:
+                        name: add-project-module
+                        labels:
+                                app: add-project-module
+                                type: back-end
+                spec:
+                        containers:
+                                -  name: add-project-module
+                                   image: dhanuman/architects2019:ADDPROJECTS_ad62f7_2019
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: add-project-module
+                        type: back-end
+
+
+

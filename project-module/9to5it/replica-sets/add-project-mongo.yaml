@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+   name: mongo
+   namespace: ingress-nginx
+spec:
+   template:
+           metadata:
+                        labels:
+                                run: mongo
+           spec:
+                        containers:
+                                -  name: mongo
+                                   image: mongo
+                                   ports:
+                                           - containerPort: 27017

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+        name: api-server-module
+        namespace: ingress-nginx
+        labels:
+                app: api-server-replica-set
+                type: replica-set
+spec:
+        template:
+                metadata:
+                        name: api-server-module
+                        labels:
+                                app: api-server-module
+                                type: back-end
+                spec:
+                        containers:
+                                -  name: api-server-module
+                                   image: dhanuman/architects2019:API-SERVER_a5a153_2019
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: api-server-module
+                        type: back-end
+
+
+

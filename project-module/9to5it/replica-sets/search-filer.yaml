@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+        name: search-filter-module
+        namespace: ingress-nginx
+        labels:
+                app: search-filter-replica-set
+                type: replica-set
+spec:
+        template:
+                metadata:
+                        name: search-filter-module
+                        labels:
+                                app: search-filter-module
+                                type: back-end
+                spec:
+                        containers:
+                                -  name: search-filter-module
+                                   image: dhanuman/architects2019:SEARCHFILTER_274bec_2019
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: search-filter-module
+                        type: back-end
+
+
+

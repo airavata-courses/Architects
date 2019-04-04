@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+        name: ui-module
+        namespace: ingress-nginx
+        labels:
+                app: ui-module-replica-set
+                type: replica-set
+spec:
+        template:
+                metadata:
+                        name: ui-module
+                        labels:
+                                app: ui-module
+                                type: front-end
+                spec:
+                        containers:
+                                -  name: ui-module
+                                   image: dhanuman/architects2019:UI_7ddba7_2019
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: ui-module
+                        type: front-end
+
+
+

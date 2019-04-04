@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+        name: user-management-module
+        namespace: ingress-nginx
+        labels:
+                app: user-management-replica-set
+                type: replica-set
+spec:
+        template:
+                metadata:
+                        name: user-management-module
+                        labels:
+                                app: user-management-module
+                                type: back-end
+                spec:
+                        containers:
+                                -  name: user-management-module
+                                   image: dhanuman/architects2019:USERMODULE_c7e366_2019
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: user-management-module
+                        type: back-end
+
+
+
