@@ -16,7 +16,7 @@ spec:
                 spec:
                         containers:
                                 -  name: add-project-module
-                                   image: dhanuman/architects2019:ADDPROJECTS_ad62f7_2019
+                                   image: dhanuman/architects2019:ADDPROJECTS_ef8ef4_2019
         replicas: 3
         selector:
                 matchLabels:

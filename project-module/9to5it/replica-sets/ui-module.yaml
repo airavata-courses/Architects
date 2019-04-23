@@ -16,7 +16,7 @@ spec:
                 spec:
                         containers:
                                 -  name: ui-module
-                                   image: dhanuman/architects2019:UI_7ddba7_2019
+                                   image: dhanuman/architects2019:UI
         replicas: 3
         selector:
                 matchLabels:
