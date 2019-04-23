@@ -25,7 +25,7 @@ const styles = {
   padding: "8px"
 },
  NavBar :{
-  background: "#3f51b5"
+  background: "#3f86b5"
 }
 };
 

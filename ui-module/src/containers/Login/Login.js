@@ -127,6 +127,7 @@ class Login extends Component {
      provider_pic: res.w3.Paa
    };
    localStorage.setItem('authToken', postData.token)
+   console.log(res)
       //localStorage.setItem('isAdmin', res.data.admin)
       window.location.assign('/')
   }

@@ -5,7 +5,9 @@
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
     padding: 10px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    margin-left: 50px;
+
 }
 
 @media (min-width: 600px) {
