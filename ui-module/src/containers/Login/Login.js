@@ -12,6 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from "axios";
 import SERVER_URL from "../../static/Config/Config";
+import GoogleLogin from "react-google-login";
+import setAuthToken from "./util";
+import jwt_decode from "jwt-decode";
 
 const styles = theme => ({
   main: {
@@ -60,6 +63,12 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  setCurrentUser = decoded => {
+    return {
+      //type: SET_CURRENT_USER,
+      payload: decoded
+    };
+  };
 
   onChange(e) {
     console.log("changed")
@@ -73,7 +82,11 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(this.state.email,this.state.password)
+    this.postRequestLogin(user)
+  }
+
+  postRequestLogin = user => {
+    console.log(user.email, user.password)
     axios
     .post(SERVER_URL+"/login", user)
     .then(res => {
@@ -89,13 +102,44 @@ class Login extends Component {
       this.setState({ errors: "Invalid cerdentials"}) 
       //err.response.data""
       });
-
   }
 
+  signup(res, type) {
+    let postData;
+    if (type === 'facebook' && res.email) {
+    postData = {
+         name: res.name,
+         provider: type,
+         email: res.email,
+         provider_id: res.id,
+         token: res.accessToken,
+         provider_pic: res.picture.data.url
+    };
+   }
+
+   if (type === 'google' && res.w3.U3) {
+   postData = {
+     name: res.w3.ig,
+     provider: type,
+     email: res.w3.U3,
+     provider_id: res.El,
+     token: res.Zi.access_token,
+     provider_pic: res.w3.Paa
+   };
+   localStorage.setItem('authToken', postData.token)
+      //localStorage.setItem('isAdmin', res.data.admin)
+      window.location.assign('/')
+  }
+}
 
 render() {
   const { classes } = this.props
   const { errors }= this.state
+  const responseGoogle = (response) => {
+    console.log("google console");
+    console.log(response);
+    this.signup(response, 'google');
+}
   return (
     <main className={classes.main}>
       <CssBaseline />
@@ -143,7 +187,20 @@ render() {
             <a href="/register"> Not a member yet?</a>
           </Typography>
           
-  
+          {/* <div style=""> */}
+          <GoogleLogin
+          //266359307292-r4m70tvidvna6jcnonj36l09k3uhp9du.apps.googleusercontent.com
+            clientId="498630087136-oorljhuca5lojak119ji46rvn02g764d.apps.googleusercontent.com"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            //render={renderProps => (
+            //  <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Google Login button</button>
+            //)}
+            buttonText="Google Login"
+            className="btn btn-outline-danger btn-block mt-4">
+            <span> Sign In using Google Account</span>
+          </GoogleLogin>
+          {/* </div> */}
         </form>
       </div>
     </main>
