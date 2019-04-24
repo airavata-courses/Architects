@@ -11,12 +11,15 @@
     "express": "^4.16.4",
     "ip": "^1.1.5",
     "mongoose": "^5.4.9",
-    "node-zookeeper-client": "^0.2.3",
     "public-ip": "^3.0.0",
     "validator": "^10.11.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.18.9",
+    "request": "^2.88.0",
+    "should": "^13.2.3"
   },
   "scripts": {
     "server": "node server.js",
