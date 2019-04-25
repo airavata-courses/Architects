@@ -16,7 +16,7 @@ spec:
                 spec:
                         containers:
                                 -  name: ui-module
-                                   image: dhanuman/architects2019:UI
+                                   image: dhanuman/architects2019:ui_tacc
         replicas: 3
         selector:
                 matchLabels:
