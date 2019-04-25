@@ -1,7 +1,4 @@
 'use strict';
-const publicIp = require('public-ip');
-const ZooKeeper = require('node-zookeeper-client');
-//var fs = require('fs');
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'development';
@@ -37,9 +34,7 @@ const createDevServerConfig = require('../config/webpackDevServer.config');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
- const client = ZooKeeper.createClient('149.165.171.39:2181',{ sessionTimeout: 5000 });
 
-//const serverUrl=require("../src/static/Config/Config")
 // Warn and crash if required files are missing
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
@@ -80,7 +75,6 @@ checkBrowsers(paths.appPath, isInteractive)
       // We have not found a port.
       return;
     }
-    const env = process.env;
     const config = configFactory('development');
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
     const appName = require(paths.appPackageJson).name;
@@ -96,7 +90,6 @@ checkBrowsers(paths.appPath, isInteractive)
       urls.lanUrlForConfig
     );
     const devServer = new WebpackDevServer(compiler, serverConfig);
-
     // Launch WebpackDevServer.
     devServer.listen(port, HOST, err => {
       if (err) {
@@ -106,52 +99,6 @@ checkBrowsers(paths.appPath, isInteractive)
         clearConsole();
       }
       console.log(chalk.cyan('Starting the development server...\n'));
-      
-      console.log("Start *************")
-      
-      publicIp.v4().then(ip => {
-      console.log("here")
-      console.log(client)
-      client.once('connected', function () {
-      console.log('Connected to the server.');
-  
-      client.create("/ensemble/uiModule",new Buffer(ip +":4000"),ZooKeeper.CreateMode.EPHEMERAL, function (error) {
-         if (error) {
-             console.log('Failed to create node: %s due to: %s.', error);
-         } else {
-             console.log('Node: %s is successfully created.');
-         }
-  
-         //client.close();
-     });
- });
-});
-      client.connect();
-      
-      checkNodeExists("/ensemble/apiServer")
-      .then(doesExist=>{
-        return getZnodeData("/ensemble/apiServer")
-      })
-      .then(data=>{
-        var stream = fs.createWriteStream("src/static/Config/Config.js");
-
-        stream.once('open', (fd) => {
-        stream.write("const SERVER_URL=\"http://"+data+"\";\n");
-        stream.write("export default SERVER_URL;\n");
-
-        // Important to close the stream when you're ready
-        stream.end();
-});
-      //  console.log("Here ..."+ process.env)
-      //  process.env.connectionString="http://"+data
-     //   console.log(process.env.connectionString)
-       // localStorage.setItem(process.env.connectionString);
-      })
-      .catch(error=>{
-        console.log("API server is not up!!")
-        process.exit();
-      });
-
       openBrowser(urls.localUrlForBrowser);
     });
 
@@ -168,45 +115,3 @@ checkBrowsers(paths.appPath, isInteractive)
     }
     process.exit(1);
   });
-  
- 
-
- const checkNodeExists=(path)=>{
-  const zookeeperClient=client;
-  return new Promise((resolve,reject)=>{
-      zookeeperClient.exists(path,function (error, stat) {
-          if (error) {
-              reject(false)
-          }
-          if (stat) {
-              resolve(true)
-          } else {
-              reject(false)
-          }})
-  })
-  
-
-}
-
-const getZnodeData=(path)=>{
-  const zookeeperClient=client;
-  console.log(zookeeperClient);
-  return new Promise((resolve,reject)=>{
-      zookeeperClient.getData(
-          path,
-          function (event) {
-              console.log('Got event: %s.', event);
-          },
-          function (error, data, stat) {
-              if (error) {
-                  console.log(error.stack);
-                  reject(error.stack)
-              }
-              console.log('Got data: %s', data.toString('utf8'));
-              resolve(data.toString('utf8'))          
-          }
-      );
-  })
- 
-}
-// client.connect();

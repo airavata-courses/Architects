@@ -9,7 +9,7 @@ body {
   background-image: url(./static/images/background-2.jpg);
   background-position: inherit;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 code {
