@@ -16,7 +16,7 @@ spec:
                 spec:
                         containers:
                                 -  name: api-server-module
-                                   image: dhanuman/architects2019:apiserver3
+                                   image: dhanuman/architects2019:apiserver_tacc
         replicas: 3
         selector:
                 matchLabels:
