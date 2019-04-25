@@ -4,15 +4,12 @@ const register = require("../../static/Registry.json");
 const passport = require("passport");
 
 router.post("/",
-  passport.authenticate("jwt", {
-    session: false
-  }),
   (req, res) => {
     //console.log(req);
     const errors = {};
-    sAxios.post(register.projectModule+ register.services.route.postProject, req.body )
+    Axios.post(register.projectModule+ register.services.route.postProject, req.body )
         .then((Response) => {
-          return res.set(Response.data);
+          return res.status(200).json(Response.data);
         })
         .catch(error => {
           errors.data="Unable to add projects"

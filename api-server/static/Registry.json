@@ -1,7 +1,7 @@
 {
-    "searchModule": "http://localhost:5000",
-    "projectModule": "http://localhost:8080",
-    "userModule": "http://localhost:22000",
+    "searchModule": "http://129.114.16.204:30048",
+    "projectModule": "http://129.114.16.204:30028",
+    "userModule": "http://129.114.16.204:30038",
     "client": {
         "route": {
             "postLogin": "/login",
