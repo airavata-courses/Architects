@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: ui-module-deployment
+        namespace: ingress-nginx
+        labels:
+                app: ui-module-deployment
+                type: deployment
+spec:
+        template:
+                metadata:
+                        name: ui-module
+                        labels:
+                                app: ui-module
+                                type: front-end
+                spec:
+                        containers:
+                                -  name: ui-module
+                                   image: dhanuman/architects2019:ui_tacc
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: ui-module
+                        type: front-end
+
+
+

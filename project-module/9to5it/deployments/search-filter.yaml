@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: search-filter-deployment
+        namespace: ingress-nginx
+        labels:
+                app: search-filter-deployment
+                type: deployment
+spec:
+        template:
+                metadata:
+                        name: search-filter-module
+                        labels:
+                                app: search-filter-module
+                                type: back-end
+                spec:
+                        containers:
+                                -  name: search-filter-module
+                                   image: dhanuman/architects2019:SEARCHFILTER_98a2dc_2019
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: search-filter-module
+                        type: back-end
+
+
+
