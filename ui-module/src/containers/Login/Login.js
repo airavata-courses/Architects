@@ -191,7 +191,8 @@ render() {
           {/* <div style=""> */}
           <GoogleLogin
           //266359307292-r4m70tvidvna6jcnonj36l09k3uhp9du.apps.googleusercontent.com
-            clientId="498630087136-oorljhuca5lojak119ji46rvn02g764d.apps.googleusercontent.com"
+            //clientId="498630087136-oorljhuca5lojak119ji46rvn02g764d.apps.googleusercontent.com"
+            clientId="266359307292-4qls6ssdfg6blodet1ub2v7dp4vans5p.apps.googleusercontent.com" 
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             //render={renderProps => (
