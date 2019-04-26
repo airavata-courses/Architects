@@ -1,7 +1,7 @@
 {
-    "searchModule": "http://149.165.171.205:30048",
-    "projectModule": "http://149.165.171.205:30028",
-    "userModule": "http://149.165.171.205:30038",
+    "searchModule": "http://129.114.16.204:30048",
+    "projectModule": "http://129.114.16.204:30028",
+    "userModule": "http://129.114.16.204:30038",
     "client": {
         "route": {
             "postLogin": "/login",
